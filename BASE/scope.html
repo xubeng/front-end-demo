@@ -1,0 +1,41 @@
+<script type="text/javascript">
+	// 'use strict'
+	function fn(a) {
+				b=a;//LHS
+
+		// console.log(a+b);//RHS
+			for (var i = 1; i <=5; i++) {
+		(function(i){
+			setTimeout(function timer(){
+				console.log(i)
+			},1000*i);
+		})(i);
+	}
+
+	}
+	// fn(3)
+
+function f1() {
+	function bar(a){
+		i=3;
+		console.log(a+i);
+	}
+	for (var i = 0; i < 10; i++) {
+		bar(i*2);
+	}
+}
+// f1();//死循环
+
+// --------代码块-----------------
+{
+	let a =1;
+	console.log(a);
+	//let a =1;//Uncaught ReferenceError: a is not defined
+}
+var i;
+for( i =0;i<3;i++){
+	console.log(i)
+}
+console.log(i)//块级作用域丢失
+
+</script>

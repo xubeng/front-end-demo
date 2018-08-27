@@ -1,0 +1,62 @@
+<script type="text/javascript">
+	var COUNT = 0;
+// 	    var timer = null;
+
+function testFn() { console.log(COUNT++); }
+// // 浏览器resize的时候
+// // 1. 清除之前的计时器
+// // 2. 添加一个计时器让真正的函数testFn延后100毫秒触发
+// window.onresize = function () {
+//     clearTimeout(timer);
+
+//     timer = setTimeout(function() {
+//         testFn();
+//     }, 100);
+// };
+
+/**
+ * 函数节流方法
+ * @param Function fn 延时调用函数
+ * @param Number delay 延迟多长时间
+ * @return Function 延迟执行的方法
+ */
+// var throttle = function (fn, delay) {
+//     var timer = null;
+
+//     return function () {
+//         clearTimeout(timer);
+//         timer = setTimeout(function() {
+//             fn();
+//         }, delay);
+//     }
+// };
+/**
+ * 函数节流方法
+ * @param Function fn 延时调用函数
+ * @param Number delay 延迟多长时间
+ * @param Number atleast 至少多长时间触发一次
+ * @return Function 延迟执行的方法
+ */
+var throttle = function (fn, delay, atleast) {
+    var timer = null;
+    var previous = null;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    return function () {
+        var now = +new Date();
+console.log("now:"+now);
+        if ( !previous ) previous = now;
+
+        if ( now - previous > atleast ) {
+            fn();
+            // 重置上一次开始时间为本次结束时间
+            previous = now;
+        } else {
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                fn();
+            }, delay);
+        }
+    }
+};
+window.onresize = throttle(testFn, 200, 1000);
+</script>

@@ -3,35 +3,220 @@
 <head>
 	<title>三栏页面布局</title>
 	<style type="text/css">
-		.left{
-			float: left;
-			width: 300px;
-			background-color: red;
-
+		html{
+			margin: 0px;
+			padding: 0px;
 		}
-		.right{
-			float: right;
-			width: 300px;
-			background-color: blue;
-		}
-		.middle{
-			background-color: yellow;
-
+		h1{
+			margin-top: 50px;
 		}
 	</style>
 </head>
 <body>
+	<!-- 1 浮动实现  三/四栏布局 
+缺点：float、absolute脱离文档流，增加高度布局就乱，table、flex还能自适应，absolute、grid布局会超出容器；
+移动端用flex比较多，flex不行的话，比如兼容IE8，可以考虑table。
+	-->
 <section>
-	
-	<article>
-		<h1> 浮动实现  三栏布局</h1>
+		<style type="text/css">
+		.float{
+			
+		}
+		.float .left{
+			float: left;
+			width: 300px;
+			background-color: red;
+		}
+		.float .right{
+			float: right;
+			width: 300px;
+			background-color: blue;
+		}
+		.float .middle1{
+			background-color: yellow;
+			float: left;
+			height: 100px;
+
+		}
+		.float .middle2{
+			background-color: purple;
+			height: 100px;
+
+		}
+	</style>
+	<article class="float">
+
+		<h1> 浮动实现  三/四栏布局</h1>
 
 		<div class="left">left</div>	
 
 				<div class="right">right</div>
-	<div class="middle">middle</div>
+				<div>
+		<div class="middle1">middle1</div>
+			<div class="middle2">middle2</div>
+		</div>
 
 	</article>
 </section>
+
+<!-- 2 绝对定位  三栏布局 -->
+<section>
+		<style type="text/css">
+		.absolute>div{
+			position: absolute;
+		}
+		.absolute .left{
+			/*float: left;*/
+			width: 300px;
+			background-color: red;
+			left: 0px
+
+		}
+		.absolute .right{
+			/*float: right;*/
+			width: 300px;
+			background-color: blue;
+			right: 0px;
+		}
+		.absolute .middle1{
+			background-color: yellow;
+			left: 300px;
+			right: 300px;
+			/*float: left;*/
+
+		}
+		.absolute .middle2{
+			background-color: purple;
+			right: 0px;
+		}
+	</style>
+	<article  class="absolute">
+
+		<h1> 绝对定位  三栏布局</h1>
+
+		<div class="left">left</div>	
+		<div class="right">right</div>
+		<div class="middle1">middle1</div>
+		<!-- <div class="middle2">middle2</div> -->
+	</article>
+</section>
+
+<!-- 3 flex  三栏布局 -->
+<h1> flex  三栏布局</h1>
+<section>
+		<style type="text/css">
+		.flex{
+			display: flex;
+			margin-top:30px 
+		}
+		.flex .left{
+			/*float: left;*/
+			width: 300px;
+			background-color: red;
+			flex: 1
+		}
+		.flex .right{
+			/*float: right;*/
+			width: 300px;
+			background-color: blue;
+			flex: 1
+		}
+		.flex .middle1{
+			background-color: yellow;
+			flex: 1
+		}
+		.flex .middle2{
+			background-color: purple;
+		}
+	</style>
+
+			
+	<article  class="flex">
+
+
+		<div class="left">left</div>
+		<div class="middle1">middle1</div>	
+		<div class="right">right</div>
+		<!-- <div class="middle2">middle2</div> -->
+	</article>
+</section>
+<!-- 4 table  三栏布局 -->
+<section>
+		<style type="text/css">
+		.table{
+			
+			margin-top:30px;
+			width: 100%;
+			display: table;
+
+		}
+		.table>div{
+			display: table-cell;
+		}
+		.table .left{
+			/*float: left;*/
+			width: 300px;
+			background-color: red;
+		}
+		.table .right{
+			/*float: right;*/
+			width: 300px;
+			background-color: blue;
+			
+		}
+		.table .middle1{
+			background-color: yellow;
+		}
+		
+	</style>
+			<h1> table  三栏布局</h1>
+
+	<article  class="table">
+
+
+		<div class="left">left</div>
+		<div class="middle1">middle1</div>	
+		<div class="right">right</div>
+	</article>
+</section>
+<!-- 5 grid  三栏布局 -->
+<section>
+		<style type="text/css">
+		.grid{
+			
+			margin-top:30px;
+			width: 100%;
+			display: grid;
+			grid-template-rows: 100px;
+        	grid-template-columns: 300px auto 300px;//列
+		}
+		
+		.grid .left{
+			/*width: 300px;*/
+			background-color: red;
+		}
+		.grid .right{
+			/*width: 300px;*/
+			background-color: blue;
+			
+		}
+		.grid .middle1{
+			background-color: yellow;
+		}
+		
+	</style>
+			<h1> grid  三栏布局</h1>
+
+	<article  class="grid">
+
+
+		<div class="left">left</div>
+		<div class="middle1">middle1</div>	
+		<div class="right">right</div>
+	</article>
+</section>
+</body>
+</html>
+
 </body>
 </html>

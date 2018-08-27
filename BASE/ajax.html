@@ -1,0 +1,15 @@
+<script type="text/javascript">
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST','/api',false);
+	xhr.onreadystatechange = function () {
+		// 异步函数
+		if(xhr.readyState === '4'){
+			if(xhr.status === '200'){
+				alert(xhr.responseText);
+			}
+		}
+		
+	}
+xhr.send();
+</script>

@@ -1,0 +1,29 @@
+<canvas id="c1" width="400" height="400" color=red ></canvas>
+<script type="text/javascript">
+	var draw = document.getElementById('c1');
+	if(draw.getContext){
+		var context = draw.getContext('2d');
+		// console.log(context);
+		context.fillStyle = "red";
+		context.strokeStyle = "red";
+		context.fillRect(10,10,50,50);
+		context.strokeRect(10,10,100,50);
+		// 绘制曲线
+		context.beginPath();
+		context.arc(100,100,50,0*Math.PI,2*Math.PI,false);
+		context.moveTo(85,100);
+		context.arc(100,100,45,0*Math.PI,2*Math.PI,false);
+		context.moveTo(100,100);
+		context.lineTo(100,65);
+				context.strokeStyle = "red";
+context.moveTo(100,100);
+		context.lineTo(130,85);
+		setTimeout(function timer() {
+			context.moveTo(100,100);
+		context.lineTo(100,65);
+		}, 1000);
+		context.stroke();
+		// context.fill();
+	}
+	
+</script>

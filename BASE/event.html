@@ -1,10 +1,46 @@
 <button>按钮</button>
+<div>
+	<a href="#">代理事件</a>
+	<a href="#">代理事件</a>
+	<button>按钮</button>
 
+</div>
 <script type="text/javascript">
 	
 	var btn = document.getElementsByTagName('button');
-	btn.addEventListener('click',function a(e) {
+	// console.log(btn)
+	// btn[0].addEventListener("click",function(e) {
 
-		alert(1)
-	},false)
+	// 	alert(1)
+	// })
+
+	// 通用事件绑定函数
+	function EventUtil(ele,type,fn){
+		ele.addEventListener(type,fn);
+	}
+	EventUtil(btn[0],"click",function (e) {
+		console.log(e);
+		alert("click")
+	})
+	// 支持代理的事件绑定通用函数
+	function ProxyEventUtil(ele,type,fn,selector){
+		if(selector==null){
+			ele.addEventListener(type,fn);
+		}else{
+			ele.addEventListener(type,function (e) {
+				var target = e.target;
+				console.log('e')
+				console.log(e)
+				console.log('target')
+				console.log(target)
+				console.log('e.currenttarget')
+				console.log(e.currentTarget)
+				if (target.matches(selector)) {fn.call(target);}
+			});
+		}
+	}
+	var d = document.getElementsByTagName('div')[0];
+	ProxyEventUtil(d,'click',function(){
+		alert("a");
+	},'a');
 </script>

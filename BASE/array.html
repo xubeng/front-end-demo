@@ -1,2 +1,22 @@
-['1','2'].join('b','..','c')
-"1b2"
+<script type="text/javascript">
+	
+	function forEachEle(argument,fn) {
+		if(argument instanceof Array){
+			argument.forEach(function (item,index) {
+				fn(index,item);		
+			})
+		}else {
+			for(var key in argument){
+				fn(key,argument[key]);
+			}
+		}
+
+	}
+
+	forEachEle([1,2],function fn(index,item) {
+		console.log(index,item);
+	})
+	forEachEle({a:1,b:2},function fn(key,value) {
+		console.log(key,value);
+	})
+</script>

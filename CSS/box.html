@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>盒模型、BFC</title>
+	<style type="text/css">
+		html{
+			margin: 0px;
+			padding: 0px;
+		}
+		.hidden{
+				background-color: red;
+				overflow: hidden;
+		}
+		.hidden .child{
+			background-color: yellow;
+			height: 100px;
+			margin-top: 10px
+		}
+		.float{
+			margin-top: 60px;
+				background-color: red;
+				
+		}
+		.float .left{
+			background-color: yellow;
+			height: 100px;
+			width: 50px;
+			float:left;
+		}
+		.float .right {
+			background-color: blue;
+			height: 130px;
+			/*clear: left;*/
+			/*overflow: hidden;*/
+		}
+
+	</style>
+</head>
+<body>
+<!-- BFC  父子元素垂直方向边距重叠  还有上下兄弟元素取margin-top和margin-bottom最大值
+空元素取该元素argin-top和margin-bottom最大值。  封闭的空间，相当于封装，外部不会影响内部，内部也不影响外部。
+作用：自适应布局。 应用场景：清除float的影响；去margin重叠。
+-->	
+<div class="hidden">
+	<div class="child">
+		 hidden创建bfc 
+	</div>
+</div>
+<!-- BFC不与float重叠 -->
+<div class="float">
+	<div class="left">
+		BFC不与float重叠   left
+	</div>
+	<div class="right">
+		BFC不与float重叠  right
+	</div>
+</div>
+<!-- BFC的子元素即使是float，也会参与BFC的高度计算-->
+<style type="text/css">
+	.height{
+		background-color: red;
+		margin-top: 30px;
+		/*overflow: auto;*/
+		/*float:left; overflow都可以将子元素纳入父元素height的计算*/
+		float:left;
+	}
+	.height .child{
+		background-color: pink;
+		float:left;
+		font-size:20px;
+	}
+</style>
+<div class="height">
+	<div class="child">
+		 bfc child
+	</div>
+	
+</div>
+</body>
+</html>

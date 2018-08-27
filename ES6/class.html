@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div></div>
+
+<div></div>
+<div></div>
+</body>
+<script type="text/javascript">
+	
+	class cls1{
+	constructor(name){
+		this.name=name;
+	}
+
+		out(){
+			console.log(this.name)
+		}
+	}
+	let c1 = new cls1('name');
+	c1.out();
+		console.log(c1)
+
+	console.log(c1.__proto__ === cls1.prototype)
+		console.log(cls1.prototype )
+
+		console.log(c1.__proto__ === cls1.prototype.constructor)
+		console.log(cls1 === cls1.prototype.constructor)//？？？？？记住
+		// -----------------------------
+		class jQuery{
+			constructor(selector){
+				let dom = Array.prototype.slice.call(document.querySelectorAll(selector));
+				let len = dom?dom.length:0;
+console.log(this);//jQuery对象
+console.log(dom);
+				this.selector = dom;
+				this.length = len;
+			}
+		}
+window.$ = function (selector) {
+return new jQuery(selector);//返回包装函数
+}
+console.log($('div'));
+</script>
+</html>
+

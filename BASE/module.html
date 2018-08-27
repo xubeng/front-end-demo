@@ -1,0 +1,56 @@
+<script type="text/javascript">
+	var Modules = (function ModulesManager() {
+		var modules = {};
+		function define(name,deps,impl) {
+			for (var i = 0; i < deps.length; i++) {
+				deps[i] = modules[deps[i]];
+			}
+			modules[name] = impl.apply(impl,deps);
+		}
+		
+		function getModule(name) {
+			return modules[name];
+		}
+
+		return {
+			define: define,
+			getModule: getModule
+		};
+	 })();
+
+	Modules.define('m1',[],function f1() {
+		function hello(argument) {
+			return "hello"+argument;
+		}
+		return {
+			hello:hello
+		};
+	})
+	Modules.define('m3',[],function f1() {
+		function ff(argument) {
+			return "ff"+argument;
+		}
+		return {
+			ff:ff
+		};
+	})
+	Modules.define('m2',['m1','m3'],function f2(argument,ff) {
+		debugger;
+		function awesome() {
+			console.log(argument)
+			console.log(argument.hello("finit"))
+			console.log(ff.ff("finit"))
+
+		}
+		return {
+			awesome:awesome
+		};
+		
+	})
+
+	// var m1 = Modules.getModule('m1');
+	// console.log(m1.hello("xb"));
+	var m2 =  Modules.getModule('m2');
+	m2.awesome();
+	
+</script>

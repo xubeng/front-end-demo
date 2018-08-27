@@ -2,6 +2,7 @@ var server = require('http');
 
 server.createServer(function(request,response){
 	console.log('request.url'+request.url);
+	request.setHeader('')
 	response.end('已接收');
 }).listen(7777);
 

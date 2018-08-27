@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function loadImg(src) {
+		const promise = new Promise(function(resolve,reject){
+			var img = document.createElement("img");
+			img.src=src;
+			img.onlaod = function () {
+				resolve(img);
+			}
+			img.onerror = function () {
+				reject();
+			}
+			
+		});
+		return  promise;
+	}
+	var src = 'https://csdnimg.cn/pubfooter/images/csdn_cs_qr.png';
+	var result =  loadImg(src);
+	console.log(result)
+	result.then(function (img) {
+		console.log(img.width)
+				console.log(img)
+
+	},function () {
+		console.log('err')
+	});
+</script>
+
+</html>
