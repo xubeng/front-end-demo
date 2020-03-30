@@ -9,6 +9,9 @@ var realArr = strArr.slice(1,strArr.length);
 console.log('firstStr:',firstStr.join())
 console.log('strArr:',strArr)
 
+/**
+ * 字符串拼接
+ */
 var realStr = realArr.join("").toUpperCase();
 var arr = realStr.split("");
 console.log('arr:',arr)
@@ -62,3 +65,8 @@ console.log(str1)
 if(!str1){
     console.log("1")
 }
+
+realArr.forEach(element => {
+    console.log(element)
+    break;
+});

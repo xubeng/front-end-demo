@@ -1,3 +1,6 @@
+/**
+ * 键盘转换
+ */
 var str='H kz k xif.'
 var outputStr =[]
 var strArr=str.split("")
