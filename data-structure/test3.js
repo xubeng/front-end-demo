@@ -50,3 +50,7 @@ for (let j = 0; j < inputStack.length; j++) {
 // console.log("2".charCodeAt())
 // console.log("m".charCodeAt())
 console.log(String.fromCharCode(109))
+
+var a = [2,4,5,3];
+a.splice(3,0,7)
+console.log(a)
