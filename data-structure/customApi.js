@@ -6,7 +6,7 @@ String.prototype.trim1=function () {
  var arr =   str.split("");
  var tmpArr = [];
 
-  arr.forEach(function (item,index,arr) {
+  arr.forEach(function (item,index) {
      if (item !== " ") {
         tmpArr.push(index);
         // console.log(index)
